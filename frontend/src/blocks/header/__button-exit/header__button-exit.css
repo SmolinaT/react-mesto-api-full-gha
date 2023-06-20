@@ -1,0 +1,12 @@
+.header__button-exit {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  margin: 0;
+}
+
+@media screen and (max-width: 500px) {
+  .header__button-exit {
+    margin-bottom: 18px;
+  }
+}

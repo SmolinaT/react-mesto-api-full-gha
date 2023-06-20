@@ -1,0 +1,17 @@
+.register__text {
+  border: 0;
+  border-bottom: 2px solid #CCCCCC;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #CCCCCC;
+  margin: 0;
+  padding: 0;
+  padding-bottom: 8px;
+  outline: none;
+  background-color: #000000;
+}
+
+.register__text:first-child {
+  margin-bottom: 30px;
+}
