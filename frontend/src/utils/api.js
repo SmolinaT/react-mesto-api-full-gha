@@ -20,7 +20,7 @@ class Api {
       headers: {
         authorization: `Bearer ${token}`,
         'Content-Type': 'application/json'
-      }
+      },
     })
     .then(this._handleReturnPromise)
   }
