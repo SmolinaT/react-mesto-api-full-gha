@@ -116,5 +116,6 @@ class Api {
 }
 
 export const api = new Api({
-  address: "http://localhost:3000",
+  //address: "http://localhost:3000",
+  address: "https://api.smolina.nomoreparties.sbs"
 });
