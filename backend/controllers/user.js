@@ -97,7 +97,7 @@ const updateProfile = (req, res, next) => {
   )
     .orFail()
     .then((user) => {
-      res.send({ data: user });
+      res.send(user);
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
@@ -123,7 +123,7 @@ const updateAvatar = (req, res, next) => {
   )
     .orFail()
     .then((user) => {
-      res.send({ data: user });
+      res.send(user);
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {

@@ -55,14 +55,15 @@ function App() {
     if (token) {
       auth.checkToken(token)
         .then((res) => {
-          if (res.data) {
+          if (res) {
             setLoggIn(true);
-            setProfileEmail(res.data.email);
+            setProfileEmail(res.email);
             navigate("/");
           }
         })
         .catch((err) => {
           console.log(err);
+          localStorage.removeItem('jwt');
           openInfoTooltipPopup(false);
         });
     }
@@ -106,7 +107,7 @@ function App() {
 
   function handleCardLike(card) {
     // Снова проверяем, есть ли уже лайк на этой карточке
-    const isLiked = card.likes.some(i => i._id === currentUser._id);
+    const isLiked = card.likes.some(id => id === currentUser._id);
     
     // Отправляем запрос в API и получаем обновлённые данные карточки
     api.changeLikeCardStatus(card._id, isLiked)

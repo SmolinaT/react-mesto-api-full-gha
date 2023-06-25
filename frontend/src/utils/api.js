@@ -1,7 +1,6 @@
 class Api {
   constructor({address, headers}) {
     this._address = address;
-    this._headers = headers;
     this._handleReturnPromise = this._handleReturnPromise.bind(this);
   }
 
@@ -15,27 +14,39 @@ class Api {
 
   //Получить данные пользователя
   getUserData() {
+    const token = localStorage.getItem('jwt');
     return fetch(`${this._address}/users/me`, {
       method: 'GET',
-      headers: this._headers
+      headers: {
+        authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
     })
     .then(this._handleReturnPromise)
   }
 
   //Получить список всех карточек в виде массива
   getInitialCards() {
+    const token = localStorage.getItem('jwt');
     return fetch(`${this._address}/cards`, {
       method: 'GET',
-      headers: this._headers
+      headers: {
+        authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
     })
     .then(this._handleReturnPromise)
   }
 
   //Редактировать данные пользователя
   editUserData(data) {
+    const token = localStorage.getItem('jwt');
     return fetch(`${this._address}/users/me`, {
       method: 'PATCH',
-      headers: this._headers,
+      headers: {
+        authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({
         name: data.name,
         about: data.about
@@ -46,9 +57,13 @@ class Api {
 
   //Добавить карточку
   addNewCard(data) {
+    const token = localStorage.getItem('jwt');
     return fetch(`${this._address}/cards`, {
       method: 'POST',
-      headers: this._headers,
+      headers: {
+        authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({
         name: data.name,
         link: data.link
@@ -59,27 +74,39 @@ class Api {
 
   //Удалить карточку
   deleteCard(id) {
+    const token = localStorage.getItem('jwt');
     return fetch(`${this._address}/cards/${id}`, {
       method: 'DELETE',
-      headers: this._headers
+      headers: {
+        authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      },
     })
     .then(this._handleReturnPromise)
   }
 
   //поставить и удалить лайк
   changeLikeCardStatus(id, isLiked) {
+    const token = localStorage.getItem('jwt');
     return fetch(`${this._address}/cards/${id}/likes`, {
       method: isLiked ? 'DELETE' : 'PUT',
-      headers: this._headers
+      headers: {
+        authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      },
     })
     .then(this._handleReturnPromise)
   }
 
   //Заменить аватар
   editAvatar(data) {
+    const token = localStorage.getItem('jwt');
     return fetch(`${this._address}/users/me/avatar`, {
       method: 'PATCH',
-      headers: this._headers,
+      headers: {
+        authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({
         avatar: data.avatar
       })
@@ -89,9 +116,5 @@ class Api {
 }
 
 export const api = new Api({
-  address: "https://mesto.nomoreparties.co/v1/cohort-61",
-  headers: {
-    authorization: "0164aac4-3c8a-4bb3-9f33-aaf495de1575",
-    'Content-Type': 'application/json'
-  }
+  address: "http://localhost:3000",
 });
