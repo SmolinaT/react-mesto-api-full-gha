@@ -7,7 +7,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 158.160.38.65
+IP 158.160.38.65
 
 Frontend https://smolina.nomoredomains.work
 
